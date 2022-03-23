@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app>
+<!-- ng-app is a directive -->
 
 <head>
     <title>TheNetNinja Angular Playlist</title>
     <link href="content/css/styles.css" rel="stylesheet" type="text/css" />
-    <script src="angular-js-playlist/app/lib/angular.min.js"></script>
+    <script src="./app/lib/angular.min.js"></script>
 </head>
 
 <body>
-
+    <input type="text" ng-model="favMeat" placeholder="enter your fav meat">
+    <!--ng-model is used to store data, whatever I type into the input is stored to the ng-model -->
+    <p>Your fav meat is: {{favMeat}}</p>
+    <!-- {{}} is an expression used to bind data-->
 </body>
 
 </html>
