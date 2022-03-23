@@ -7,12 +7,23 @@
     <link href="content/css/styles.css" rel="stylesheet" type="text/css" />
     <script src="./app/lib/angular.min.js"></script>
 </head>
+<!-- Directives run the app, we're directing angular to do something for us-->
 
-<body>
+<body ng-init="numbers=[1,2,3,4]">
+    <!--Do not use init, only for demo purposes-->
     <input type="text" ng-model="favMeat" placeholder="enter your fav meat">
     <!--ng-model is used to store data, whatever I type into the input is stored to the ng-model -->
     <p>Your fav meat is: {{favMeat}}</p>
     <!-- {{}} is an expression used to bind data-->
+    <!-- Expressions can also be used to evaulate data ie {{2 + 2}} displays 4-->
+    <!-- Expressions can be used with models ie {{user.name}}-->
+    <p>Use of data in expressions from init numbers {{numbers}}. Adding numbers in array {{numbers[0]+numbers[1]}}.</p>
+    <div ng-init="ninjas=['cat', 'dog', 'fish']">
+        <ul>
+            <li ng-repeat="ninja in ninjas">{{ninja}}</li>
+        </ul>
+    </div>
+
 </body>
 
 </html>
