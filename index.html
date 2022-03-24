@@ -1,29 +1,34 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="myNinjaApp">
 <!-- ng-app is a directive -->
 
 <head>
     <title>TheNetNinja Angular Playlist</title>
     <link href="content/css/styles.css" rel="stylesheet" type="text/css" />
     <script src="./app/lib/angular.min.js"></script>
+    <script src="./app/app.js"></script>
 </head>
-<!-- Directives run the app, we're directing angular to do something for us-->
 
-<body ng-init="numbers=[1,2,3,4]">
-    <!--Do not use init, only for demo purposes-->
-    <input type="text" ng-model="favMeat" placeholder="enter your fav meat">
-    <!--ng-model is used to store data, whatever I type into the input is stored to the ng-model -->
-    <p>Your fav meat is: {{favMeat}}</p>
-    <!-- {{}} is an expression used to bind data-->
-    <!-- Expressions can also be used to evaulate data ie {{2 + 2}} displays 4-->
-    <!-- Expressions can be used with models ie {{user.name}}-->
-    <p>Use of data in expressions from init numbers {{numbers}}. Adding numbers in array {{numbers[0]+numbers[1]}}.</p>
-    <div ng-init="ninjas=['cat', 'dog', 'fish']">
-        <ul>
-            <li ng-repeat="ninja in ninjas">{{ninja}}</li>
-        </ul>
+<body>
+    <header ng-include src="'header.html'">
+        <!--ng-include gives you options to reuse parts of html, headers, footer, etc.-->
+        </ng-include>
+    </header>
+    <div ng-controller="NinjaController">
+        <div class="content">
+            <!-- <p>{{message}}</p> -->
+            <!--$scope is implied-->
+            <input type="text" ng-model="search" placeholder="search for a ninja">
+            <!--ng model matches filter name for easy search-->
+            <ul>
+                <!--ng-show is used to show items that are true, ng-hide is used to hide any items that are true-->
+                <li ng-repeat="ninja in ninjas | orderBy: 'name' | filter: search" ng-show="ninja.available">{{ninja.name}} - {{ninja.rate | currency}}</li>
+
+                <!--Currency can take string denominations-->
+                <!--Use the pipe for filtering aka orderBy:-->
+            </ul>
+        </div>
     </div>
-
 </body>
 
 </html>
